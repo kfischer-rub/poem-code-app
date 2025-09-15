@@ -1,0 +1,30 @@
+{
+  "name": "glitch-poem-code",
+  "version": "0.1.1",
+  "description": "This excercise is part of the course 'Human Ascpects of Cryptography Adoption and Use' at HCS. Thank you for playing!",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@fastify/basic-auth": "^6.2.0",
+    "@fastify/formbody": "^8.0.2",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/static": "^8.2.0",
+    "@fastify/view": "^11.0.0",
+    "dotenv": "^17.2.2",
+    "fastify": "^5.6.0",
+    "handlebars": "^4.7.8"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch"
+  ]
+}

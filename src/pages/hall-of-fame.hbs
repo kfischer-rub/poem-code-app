@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+
+    <!-- 
+      This is the main Handlebars template for the site 
+      - When the user visits the homepage or submits a color the app calls the endpoints in server.js
+      - The server script passes data in here and the Handlebars code builds it into the HTML page
+    -->
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Poem Code - Hall of Fame</title>
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- This is a handlebars IF statement
+         Checking for a custom "color" parameter from server.js -->
+    {{#if color}}
+      <!-- If there is a color value, update the style for the page title -->
+      <style>
+        .title { color:
+        {{color}}; }
+      </style>
+    {{/if}}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content" role="main">
+        <noscript>
+          <div
+            style="text-align: center; padding: 20px; background-color: #f44336; color: white;"
+          >
+            Please enable JavaScript in your browser to use this website.
+          </div>
+        </noscript>
+
+        <!-- This is the start of content for our page -->
+        <h2>
+          <code>poem-code.glitch.me</code>
+        </h2>
+        <h1 class="title">Heroic Agents</h1>
+        {{#if note}}
+          <h3>
+            {{note}}
+          </h3>
+        {{/if}}
+
+        <p>
+          <ul class="people_list">
+            {{#each winnerNames}}
+              <li class="agentName" >Agent {{this}}</li>
+
+            {{else}}
+              <li>No successful agents in the last five minutes...</li>
+            {{/each}}
+
+          </ul>
+        </p>
+
+        <div class="illo-container">
+          <img
+            src="https://cdn.glitch.global/4923a1f6-0c4c-41b2-8f8a-33081518c109/image-removebg-preview.png?v=1697599032846"
+            class="illustration"
+            alt="Agent Silhouette"
+          />
+        </div>
+
+        <!-- Instructions on using this project -->
+        <div class="instructions">
+          <h3 class="good-job hidden">
+            Good job!
+          </h3>
+          <p>
+            Total number of wrong submissions: <b>{{wrongSubmissionCounter}}</b>
+          </p>
+          <p>
+            This excercise is part of the course "Human Aspects of Cryptography Adoption and Use"
+            at <a href="https://informatik.rub.de/hcs">HCS</a>. Thank you for playing!
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <!-- The footer holds our remix button — you can use it for structure or cut it out ✂ -->
+    <footer class="footer">
+      <div class="links"></div>
+      <a href="/">
+        Go Back to Radio Operator
+      </a>
+    </footer>
+  </body>
+  <script src="hall-of-fame.js"></script>
+</html>

@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+
+    <!-- 
+      This is the main Handlebars template for the site 
+      - When the user visits the homepage or submits a color the app calls the endpoints in server.js
+      - The server script passes data in here and the Handlebars code builds it into the HTML page
+    -->
+
+    <meta charset="utf-8"/>
+    <link rel="icon" href="https://glitch.com/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Poem Code</title>
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css"/>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="content" role="main">
+        <noscript>
+            <div
+                    style="text-align: center; padding: 20px; background-color: #f44336; color: white;"
+            >
+                Please enable JavaScript in your browser to use this website.
+            </div>
+        </noscript>
+
+        <!-- This is the start of content for our page -->
+        <h1 class="title">Poem Code</h1>
+
+        <div class="agentName-form color-form hidden">
+
+            <form
+                    class="agentName-submitter color-search"
+                    method="post"
+                    action="javascript:void(0);"
+            >
+                <label for="agentName">
+
+
+                    Hello Agent! What's your name?
+                    <span id="agentNameSuggestButton">⟲</span>
+                    <br/>
+                    <input
+                            id="agentName"
+                            name="agentName"
+                            required="required"
+                            type="text"
+                            placeholder="Johnny"
+                    />
+                </label>
+                <button id="agentNameButton">Enlist</button>
+            </form>
+        </div>
+
+        <p class="welcome-back hidden">
+            Welcome back, Agent
+            <span class="agent-name-holder"></span>!
+            <span class="editNameButton" style="cursor: pointer">✎</span>
+        </p>
+
+        {{#if wrongCipherText}}
+            <div
+                    style="text-align: center; padding: 20px; background-color: #f44336; color: white;"
+            >
+                Your code did not decipher correctly. HQ is confused. Please check for mistakes and try again!
+                <p>
+
+                    <samp style="word-break: break-all;">{{wrongCipherText}}</samp></p>
+            </div>
+        {{/if}}
+
+        <div class="ciphertext-form color-form hidden">
+
+            <p>
+                Hand the code off to the radio operator.
+            </p>
+
+            <form class="ciphertext-submitter color-search" method="post">
+                <label for="ciphertext">
+                    What's your encrypted message?<br/>
+                    <input
+                            id="ciphertext"
+                            name="ciphertext"
+                            required="required"
+                            type="text"
+                    />
+                </label>
+
+                <input
+                        type="hidden"
+                        id="hidden_agentName"
+                        name="agentName"
+                        value="{{agentName}}"
+                />
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+
+        <div class="illo-container">
+            <a href="https://www.youtube.com/watch?v=XjupJslRj5E">
+                <img
+                        src-alt="https://cdn.glitch.global/4923a1f6-0c4c-41b2-8f8a-33081518c109/image-removebg-preview.png?v=1697599032846"
+                        src="https://cdn.glitch.global/4923a1f6-0c4c-41b2-8f8a-33081518c109/Radio_Operator.png?v=1729476121646"
+                        class="illustration"
+                        alt="Agent Silhoutte"
+                />
+            </a>
+        </div>
+
+        <!-- Instructions on using this project -->
+        <div class="instructions">
+            <h2>
+                Poem Code Instructions
+            </h2>
+            <p>
+                Click
+                <a
+                        href="https://docs.google.com/document/d/e/2PACX-1vS_Q0SJMXOgiCEURXKOaQucnorttG5SmWFtJ7FExedRJoax8In8ftMDGLuenGJM7u5HOwRc3pq_itDk/pub"
+                        target="_blank"
+                >here</a>
+                for a copy of your task sheet, which holds the message you have to send, and all the secrets needed to
+                apply the Poem Code.
+            </p>
+            <p>
+                Click
+                <a
+                        href="https://ruhr-uni-bochum.sciebo.de/s/D2Dh05i5mKIbvSF"
+                        target="_blank"
+                >here</a>
+                for our slides on how to apply the Poem Code, inlcuding an example.
+            </p>
+        </div>
+
+    </div>
+</div>
+<!-- The footer holds our remix button — you can use it for structure or cut it out ✂ -->
+<footer class="footer">
+    <div class="links"></div>
+    <a href="/hall-of-fame">
+        Hall of Fame
+    </a>
+</footer>
+</body>
+<script src="index.js" type="module">
+</script>
+</html>
