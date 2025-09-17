@@ -17,6 +17,7 @@ const path = require("path");
 const fastify = require("fastify")({
     // Set this to true for detailed logging:
     logger: false,
+    trustProxy: true //take real client ip from proxy headers (from e.g. render) for @fastify/rate-limit
 });
 
 // Setup our static files
@@ -37,7 +38,7 @@ fastify.register(require("@fastify/view"), {
 
 // Rate-Limiting
 fastify.register(require("@fastify/rate-limit"), {
-    max: 20,
+    max: 120,
     timeWindow: '1 minute'
 })
 
